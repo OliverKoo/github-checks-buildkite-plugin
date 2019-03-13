@@ -57,6 +57,8 @@ do
   [[ ! -z "${vol// }" ]] && run_params+=("-v" "$(expand_relative_volume_path "$vol")")
 done
 
+docker volume create --name=buildkite
+
 docker-compose -f ${COMPOSE_CONFIG} run "${run_params[@]}" --workdir=`pwd` --rm ghapp "${args[@]}" "$@"
 
 docker-compose -f ${COMPOSE_CONFIG} down
