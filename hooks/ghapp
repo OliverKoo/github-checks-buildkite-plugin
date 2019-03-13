@@ -13,6 +13,8 @@ args=()
 
 docker-compose -f ${COMPOSE_CONFIG} build ghapp
 
+docker volume create --name=buildkite
+
 if [[ "${BUILDKITE_PLUGIN_GITHUB_CHECKS_DEBUG:-false}" =~ (true|on|1) ]] ; then
   args+=("-vv")
 else
@@ -56,8 +58,6 @@ do
   # with repeated delimiters.
   [[ ! -z "${vol// }" ]] && run_params+=("-v" "$(expand_relative_volume_path "$vol")")
 done
-
-docker volume create --name=buildkite
 
 docker-compose -f ${COMPOSE_CONFIG} run "${run_params[@]}" --workdir=`pwd` --rm ghapp "${args[@]}" "$@"
 
