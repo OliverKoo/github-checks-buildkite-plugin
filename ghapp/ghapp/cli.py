@@ -272,7 +272,6 @@ async def from_job_env(
         logging.info("current_runs: %s", current_runs)
 
         check_action = job_environ_to_check_action(job_env, current_runs)
-        print "oliver"
         # output = load_job_output(output_title, output_summary, output)
         # if output:
         #     check_action.run.output = output
