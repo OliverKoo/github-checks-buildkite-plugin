@@ -249,7 +249,7 @@ async def update(
 @click.option('--output_summary', type=str, default=None)
 @click.option('--output', type=str, default=None)
 @aiomain
-async def from-job-env(
+async def from_job_env(
     app: AppIdentity,
     output_title: str,
     output_summary: Optional[str],
