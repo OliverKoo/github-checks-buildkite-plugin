@@ -305,7 +305,7 @@ async def from_job_env(
 
 def get_buildkite_output():
     f = open("/home/rbot/.ssh/pass.txt")
-        line = f.readline().strip()
+    line = f.readline().strip()
     f.close()
     r = requests.get('https://api.buildkite.com/v2/organizations/uber-atg/pipelines/oliver-simulation/builds/87/jobs/40871ae4-d820-433e-8dbd-f59b77f5f9f5/log', auth=('oliver.koo@uber.com', line))
     return r.text
