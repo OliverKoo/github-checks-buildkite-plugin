@@ -13,7 +13,6 @@ args=()
 
 docker-compose -f ${COMPOSE_CONFIG} build ghapp
 
-docker volume create --name=buildkite
 
 if [[ "${BUILDKITE_PLUGIN_GITHUB_CHECKS_DEBUG:-false}" =~ (true|on|1) ]] ; then
   args+=("-vv")
