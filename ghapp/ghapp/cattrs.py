@@ -51,7 +51,7 @@ def _register_ignore_optional_none(cls, converter=None):
     prev_unstructure = converter._unstructure_func.dispatch(cls)
     optional_attrs = {
         f.name for f in attr.fields(cls)
-        if isinstance(f.type, typing.Union) and type(None) in f.type.__args__
+        if isinstance(f.type, typing._GenericAlias) and type(None) in f.type.__args__
     }
 
     def unstructure_ignoring_optional_none(obj):
